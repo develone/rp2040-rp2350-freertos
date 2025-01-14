@@ -25,7 +25,11 @@ void task2(void *pvParameters)
 int main()
 {
     stdio_init_all();
-
+	#if PICO_RP2350
+		printf("Running on RP2350 \n");
+	#else
+		printf("Running on RP2040 \n");
+	#endif
     xTaskCreate(task1, "Task 1", 256, NULL, 1, NULL);
     xTaskCreate(task2, "Task 2", 256, NULL, 2, NULL);
     vTaskStartScheduler();
