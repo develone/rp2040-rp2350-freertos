@@ -46,7 +46,11 @@ void usb_task(void *pvParameters){
 int main()
 {
     stdio_init_all();
-
+	#if PICO_RP2350
+		printf("Running on RP2350 \n");
+	#else
+		printf("Running on RP2040 \n");
+	#endif
     xQueue = xQueueCreate(1, sizeof(uint));
 
     xTaskCreate(led_task, "LED_Task", 256, NULL, 1, NULL);

@@ -160,7 +160,11 @@ void vLaunch( void) {
 int main( void )
 {
     stdio_init_all();
-
+	#if PICO_RP2350
+		printf("Running on RP2350 \n");
+	#else
+		printf("Running on RP2040 \n");
+	#endif
     /* Configure the hardware ready to run the demo. */
     const char *rtos_name;
 #if (configNUMBER_OF_CORES > 1)

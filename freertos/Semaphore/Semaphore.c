@@ -41,7 +41,11 @@ void button_task(){
 int main()
 {
     stdio_init_all();
-
+	#if PICO_RP2350
+		printf("Running on RP2350 \n");
+	#else
+		printf("Running on RP2040 \n");
+	#endif
     count = xSemaphoreCreateCounting(5,0);
 
     xTaskCreate(led_task, "LED_Task", 256, NULL, 1, NULL);
