@@ -10,4 +10,4 @@ add_subdirectory(hello_freertos)
 add_subdirectory(2tasks)
 add_subdirectory(Mutex)
 add_subdirectory(Semaphore)
-
+add_subdirectory(Scheduling)
