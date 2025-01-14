@@ -1,4 +1,12 @@
 01/14/2025
+Several env variables need to be setup
+	export PICO_SDK_PATH=/home/devel/pico2/pico-sdk
+	export FREERTOS_KERNEL_PATH=/home/devel/pico2/freertos-lib/FreeRTOS-Kernel
+	export PICO_EXTRAS_PATH=/home/devel/pico-extras
+	export PIPELINEC_REPO="$HOME/PipelineC"
+	export OSS_CAD_SUITE=$HOME/oss-cad-suite/
+	export PICTOOL_FETCH_FROM_GITHUB=/home/devel/pico2/BUILT_PICOTOOL
+
 Starting from git@github.com:develone/rp2040-freertos-project.git dev branch Uses FreeRTOS-Kernel 
 from Raspberry Pi repo https://github.com/raspberrypi/FreeRTOS-Kernel.git
 
