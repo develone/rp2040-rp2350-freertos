@@ -1,0 +1,22 @@
+rp2040 testing freertos Scheduling example
+Welcome to minicom 2.8
+
+OPTIONS: I18n 
+Port /dev/ttyUSB0, 06:27:47
+
+Press CTRL-A Z for help on special keys
+
+Task 2 is currently running
+Task 1 is currently running
+Task 1 is currently running
+Task 2 is currently running
+Task 1 is currently running
+Task 2 is currently running
+Task 1 is currently running
+Task 2 is currently running
+Task 1 is currently running
+Task 2 is currently running
+Task 1 is currently running
+Task 2 is currently running
+Task 1 is currently running
+Task 2 is currently running
