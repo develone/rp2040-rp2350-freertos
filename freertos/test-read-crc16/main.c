@@ -70,6 +70,75 @@ static int argc;
 static char *argv[MAX_ARGS + 1];
 static bool mounted = false, run = true;
 
+static void hex_cmd(void) {
+    if (check_mount(true))
+        return;
+    bool paginate = false;
+    char* path = NULL;
+    for (int arg = 1; arg < argc; arg++)
+        if (strcmp(argv[arg], "-p") == 0)
+            paginate = true;
+        else
+            path = argv[arg];
+    if (path == NULL) {
+        strcpy(result, "file name argument is required");
+        return;
+    }
+    lfs_file_t file;
+    char* fpath = full_path(path);
+    if (fs_file_open(&file, fpath, LFS_O_RDONLY) < LFS_ERR_OK) {
+        sprintf(result, "error opening file %s", fpath);
+        return;
+    }
+    int l = fs_file_seek(&file, 0, LFS_SEEK_END);
+    fs_file_seek(&file, 0, LFS_SEEK_SET);
+    char* buf = malloc(l);
+    if (!buf) {
+        strcpy(result, "insufficient memory");
+        return;
+    }
+    if (fs_file_read(&file, buf, l) != l) {
+        sprintf(result, "error reading file %s", fpath);
+        goto done;
+    }
+    char* p = buf;
+    char* pend = p + l;
+    int line = 0;
+    while (p < pend) {
+        char* p2 = p;
+        printf("%04x", (int)(p - buf));
+        for (int i = 0; i < 16; i++) {
+            if ((i & 3) == 0)
+                printf(" ");
+            if (p + i < pend)
+                printf("%02x", p[i]);
+            else
+                printf("  ");
+        }
+        printf(" '");
+        p = p2;
+        for (int i = 0; i < 16; i++) {
+            if (p + i < pend) {
+                if (isprint(p[i]))
+                    printf("%c", p[i]);
+                else
+                    printf(".");
+            } else
+                printf(" ");
+        }
+        printf("'\n");
+        p += 16;
+        if (paginate & (++line % (screen_y - 1) == 0)) {
+            char cc = getchar();
+            if (cc == 0x03)
+                break;
+        }
+    }
+done:
+    free(buf);
+    fs_file_close(&file);
+}
+
 static void
 echo_key (char c)
 {
@@ -835,6 +904,7 @@ static cmd_t cmd_table[] = {
   {"cd", cd_cmd, "change directory"},
   {"cp", cp_cmd, "copy file"},
   {"format", format_cmd, "format the filesystem"},
+	{"hex",     hex_cmd,        "simple hexdump, use -p to paginate"},
   {"get", get_cmd, "get file (xmodem)"},
   {"ls", ls_cmd, "list directory"},
   {"mkdir", mkdir_cmd, "create directory"},
