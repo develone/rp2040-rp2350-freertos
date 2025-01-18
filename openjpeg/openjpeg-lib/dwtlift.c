@@ -1256,7 +1256,7 @@ void decom_test(int x0, int y0, int x1, int y1,char *ff_in) {
     const char *input_file;
     input_file = "dtest.j2k";
     
-	printf("In decom_test called by Pascal %s %d %d %d %d %s\n",input_file,x0,y0,x1,y1,ff_in);
+	printf("In decom_test called by Pico %s %d %d %d %d %s\n",input_file,x0,y0,x1,y1,ff_in);
 	decompress(x0, y0, x1, y1,ff_in);	
 }
  
