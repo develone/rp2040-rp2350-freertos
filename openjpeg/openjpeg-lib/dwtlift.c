@@ -497,14 +497,14 @@ int decompress(int da_x0, int da_y0, int da_x1, int da_y1,const char *input_file
                 input_file = "test.j2k";
         }
 		*/
-	gettimeofday(&start, NULL);
+	/*gettimeofday(&start, NULL);
 
 	seconds  = end.tv_sec  - start.tv_sec;
 	useconds = end.tv_usec - start.tv_usec;
  
 	mtime = seconds + useconds;
  
-	printf("Start decompression: %ld seconds %ld useconds %ld starting openjpeg\n", mtime,seconds, useconds);
+	printf("Start decompression: %ld seconds %ld useconds %ld starting openjpeg\n", mtime,seconds, useconds);*/
         if (! l_data) {
                 return EXIT_FAILURE;
         }
@@ -639,21 +639,21 @@ int decompress(int da_x0, int da_y0, int da_x1, int da_y1,const char *input_file
                         /** now should inspect image to know the reduction factor and then how to behave with data */
                 }
         }
-        gettimeofday(&end, NULL);
+        /*gettimeofday(&end, NULL);
 
 		seconds  = end.tv_sec  - start.tv_sec;
 		useconds = end.tv_usec - start.tv_usec;
  
 		mtime = seconds + useconds;
-		printf("Decompression time: %ld seconds %ld useconds %ld \n",mtime,seconds,useconds);
-		gettimeofday(&start, NULL);
+		printf("Decompression time: %ld seconds %ld useconds %ld \n",mtime,seconds,useconds);*/
+		/*gettimeofday(&start, NULL);
 
 		seconds  = end.tv_sec  - start.tv_sec;
 		useconds = end.tv_usec - start.tv_usec;
  
 		mtime = seconds + useconds;
  
-		printf("start writing: %ld seconds %ld useconds %ld starting openjpeg\n", mtime,seconds, useconds);		
+		printf("start writing: %ld seconds %ld useconds %ld starting openjpeg\n", mtime,seconds, useconds);	*/	
 		r_decompress = 	l_data;
 		octave_write_byte(r_decompress_fn,r_decompress,da_x1*da_y1);
 		g_decompress = 	l_data+da_x1*da_y1+da_x1*da_y1;
@@ -715,14 +715,14 @@ int decompress(int da_x0, int da_y0, int da_x1, int da_y1,const char *input_file
 	writeInfo(oo,infowr);
 	writeImage(oo,Matrix_aux_wr);
 	free(Matrix_aux_wr);
-		gettimeofday(&end, NULL);
+		/*gettimeofday(&end, NULL);
 
 		seconds  = end.tv_sec  - start.tv_sec;
 		useconds = end.tv_usec - start.tv_usec;
  
 		mtime = seconds + useconds;
  
-		printf("File writes: %ld seconds %ld useconds %ld starting openjpeg\n", mtime,seconds, useconds);
+		printf("File writes: %ld seconds %ld useconds %ld starting openjpeg\n", mtime,seconds, useconds);*/
 
         if (! opj_end_decompress(l_codec,l_stream))
         {
@@ -1023,7 +1023,7 @@ void lift_config(int dec, int enc, int TCP_DISTORATIO, int FILTER, int CR, int f
 	lclip = (char *)*bufferptr;
  
  	
-	gettimeofday(&start, NULL);
+	//gettimeofday(&start, NULL);
 	/*from test_tile_encoder*/
 	opj_set_default_encoder_parameters(&l_param);
 	/** you may here add custom encoding parameters */
@@ -1186,7 +1186,7 @@ void lift_config(int dec, int enc, int TCP_DISTORATIO, int FILTER, int CR, int f
 		printf("no opj_start_compress\n");
 		//return 1;
 	}
-	gettimeofday(&end, NULL);
+	/*gettimeofday(&end, NULL);
 
 	seconds  = end.tv_sec  - start.tv_sec;
 	useconds = end.tv_usec - start.tv_usec;
@@ -1194,7 +1194,7 @@ void lift_config(int dec, int enc, int TCP_DISTORATIO, int FILTER, int CR, int f
 	mtime = seconds + useconds;
  
 	printf("Compression time: %ld seconds %ld useconds %ld starting openjpeg\n", mtime,seconds, useconds);
-	gettimeofday(&start, NULL);
+	gettimeofday(&start, NULL);*/
 	for (i=0;i<l_nb_tiles;++i) {
 		if (! opj_write_tile(l_codec,i,l_data,l_data_size,l_stream)) {
 			fprintf(stderr, "ERROR -> test_tile_encoder: failed to write the tile %d!\n",i);
@@ -1240,14 +1240,7 @@ void lift_config(int dec, int enc, int TCP_DISTORATIO, int FILTER, int CR, int f
 		}
 		*/
 	 
-	gettimeofday(&end, NULL);
-
-	seconds  = end.tv_sec  - start.tv_sec;
-	useconds = end.tv_usec - start.tv_usec;
- 
-	mtime = seconds + useconds;
-	printf("Compression time: %ld seconds %ld useconds %ld \n",mtime,seconds,useconds);
- 
+  
 
  	 
 }

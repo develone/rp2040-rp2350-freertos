@@ -2,7 +2,7 @@
 double memory;
  
 int loop, decomp, encode;
-struct timeval currentTime,start,end;
+//struct timeval currentTime,start,end;
  
 long mtime, seconds, useconds;
 
