@@ -20,7 +20,7 @@ add_subdirectory(pico-lifting-sf)
 add_subdirectory(pico-lifting)
 add_subdirectory(lifting)
 #add_subdirectory(ProjectFiles)
-#add_subdirectory(openjpeg)
+add_subdirectory(openjpeg)
 add_subdirectory(freertos)
 #add_subdirectory(2cores)
 
