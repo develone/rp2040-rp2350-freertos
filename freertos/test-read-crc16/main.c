@@ -655,13 +655,13 @@ j2k_cmd (void)
 	//out_fname is passed as argv[2]
 	//Compression Ratio
 	//Compress DeCompress
-	x0=128;
-	yy0=128;
-	x1=256;
-	yy1=256;
+	x0=256;
+	yy0=256;
+	x1=1024;
+	yy1=1024;
 	*ff_in="test.j2k";
 	printf ("%d in_fname = %s out_fname = %s CR %d C/D = %d \n", argc, argv[1], argv[2], atoi(argv[3]), atoi(argv[4]));
-	decom_test(x0, yy0,  x1,  yy1, *ff_in);	
+	decom_test(x0, yy0, x1, yy1, *ff_in);	
 	//lift_config(int dec, int enc, int TCP_DISTORATIO, int FILTER, int CR, int flg, int bp, long imgsz,long him,long wim, int *bufferptr)
 	
 	//decompress(int da_x0, int da_y0, int da_x1, int da_y1,const char *input_file)
